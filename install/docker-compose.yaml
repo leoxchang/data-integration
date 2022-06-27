@@ -20,6 +20,8 @@ services:
       - "10201:10201"
     environment:
       JVM_CUSTOM: "-Dspring.cloud.consul.discovery.prefer-ip-address=true -Dspring.cloud.consul.discovery.ip-address=hostIp -Dspring.cloud.consul.host=hostIp -Dspring.datasource.url=jdbc:mysql://hostIp:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false"
+      spring.cloud.consul.host: "127.0.0.1"
+      spring.datasource.url: "jdbc:mysql://127.0.0.1:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false"
 
   dataintegration-file-management-provider:
     image: dataintegration-file-management-provider
@@ -29,7 +31,8 @@ services:
       - "10210:10210"
     environment:
       JVM_CUSTOM: "-Dspring.cloud.consul.discovery.prefer-ip-address=true -Dspring.cloud.consul.discovery.ip-address=hostIp -Dspring.cloud.consul.host=hostIp -Dspring.redis.host=hostIp  -Dspring.redis.port=6379 -Dfile.server.s3.server=hostIp -Dspring.datasource.url=jdbc:mysql://hostIp:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false"
-
+      spring.cloud.consul.host: "127.0.0.1"
+      spring.datasource.url: "jdbc:mysql://127.0.0.1:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false"
 
   dataintegration-gateway:
     image: dataintegration-gateway
@@ -39,6 +42,8 @@ services:
       - "10200:10200"
     environment:
       JVM_CUSTOM: "-Dspring.cloud.consul.discovery.prefer-ip-address=true -Dspring.cloud.consul.discovery.ip-address=hostIp -Dspring.cloud.consul.host=hostIp -Dspring.redis.host=hostIp  -Dspring.redis.port=6379"
+      spring.cloud.consul.host: "127.0.0.1"
+      spring.datasource.url: "jdbc:mysql://127.0.0.1:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false"
 
   dataintegration-model-provider:
     image: dataintegration-model-management-provider
@@ -48,6 +53,8 @@ services:
       - "10206:10206"
     environment:
       JVM_CUSTOM: "-Dspring.cloud.consul.discovery.prefer-ip-address=true -Dspring.cloud.consul.discovery.ip-address=hostIp -Dspring.cloud.consul.host=hostIp -Dspring.datasource.url=jdbc:mysql://hostIp:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false"
+      spring.cloud.consul.host: "127.0.0.1"
+      spring.datasource.url: "jdbc:mysql://127.0.0.1:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false"
 
   dataintegration-project-provider:
     image: dataintegration-project-provider
@@ -57,6 +64,8 @@ services:
       - "10202:10202"
     environment:
       JVM_CUSTOM: "-Dspring.cloud.consul.discovery.prefer-ip-address=true -Dspring.cloud.consul.discovery.ip-address=hostIp -Dspring.cloud.consul.host=hostIp -Dspring.datasource.url=jdbc:mysql://hostIp:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false"
+      spring.cloud.consul.host: "127.0.0.1"
+      spring.datasource.url: "jdbc:mysql://127.0.0.1:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false"
 
   dataintegration-run-provider:
     image: dataintegration-run-management-provider
@@ -66,6 +75,8 @@ services:
       - "10220:10220"
     environment:
       JVM_CUSTOM: "-Dspring.cloud.consul.discovery.prefer-ip-address=true -Dspring.cloud.consul.discovery.ip-address=hostIp -Dspring.cloud.consul.host=hostIp -Dspring.datasource.url=jdbc:mysql://hostIp:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false -Dspring.redis.host=hostIp  -Dspring.redis.port=6379 -Dkettle.datasource.engine.metadata.url=jdbc:mysql://hostIp:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false"
+      spring.cloud.consul.host: "127.0.0.1"
+      spring.datasource.url: "jdbc:mysql://127.0.0.1:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false"
 
   dataintegration-sso-provider:
     image: dataintegration-sso-provider
@@ -75,6 +86,8 @@ services:
       - "10217:10217"
     environment:
       JVM_CUSTOM: "-Dspring.cloud.consul.discovery.prefer-ip-address=true -Dspring.cloud.consul.discovery.ip-address=hostIp -Dspring.cloud.consul.host=hostIp -Dspring.datasource.url=jdbc:mysql://hostIp:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false -Dspring.redis.host=hostIp -Dspring.redis.port=6379"
+      spring.cloud.consul.host: "127.0.0.1"
+      spring.datasource.url: "jdbc:mysql://127.0.0.1:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false"
 
   dataintegration-sys-provider:
     image: dataintegration-sys-management-provider
@@ -84,6 +97,8 @@ services:
       - "10205:10205"
     environment:
       JVM_CUSTOM: "-Dspring.cloud.consul.discovery.prefer-ip-address=true -Dspring.cloud.consul.discovery.ip-address=hostIp -Dspring.cloud.consul.host=hostIp -Dspring.datasource.url=jdbc:mysql://hostIp:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false -Dspring.redis.host=hostIp -Dspring.redis.port=6379"
+      spring.cloud.consul.host: "127.0.0.1"
+      spring.datasource.url: "jdbc:mysql://127.0.0.1:3306/dataintegration?useUnicode=true&characterEncoding=utf-8&useSSL=false"
 
   dataintegration-ui:
     image: dataintegration-ui
@@ -104,16 +119,16 @@ services:
     volumes:
       - ./conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
       - ./data/mysql:/var/lib/mysql
-
-  redis:
-    image: redis:latest
-    container_name: redis
-    restart: always
-    ports:
-      - 6379:6379
-    volumes:
-      - ./data/redis:/data:rw
-    command: --appendonly yes
+#
+#  redis:
+#    image: redis:latest
+#    container_name: redis
+#    restart: always
+#    ports:
+#      - 6379:6379
+#    volumes:
+#      - ./data/redis:/data:rw
+#    command: --appendonly yes
 
   minio:
     image: minio/minio:RELEASE.2020-09-26T03-44-56Z
